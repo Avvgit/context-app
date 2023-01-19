@@ -1,0 +1,23 @@
+Tanto useState como useContext son funciones importantes en react para manejar el estado de una app, pero se utilizan en situaciones diferentes.
+
+I) useState se utiliza para manejar el estado local de un componente individual. 
+Es util cuando el estado solo se necesita en un componente especifico y no se comparte con otros componentes. Es mas facil de usar y la forma más común de manejar el estado en react.
+
+Por otro lado, 
+II) useContext se utiliza para compartir el estado entre componentes que estan anidados en diferentes niveles del arbol de componentes. Es uutil cuando se necesita compartir un estado comun entre varios componentes.
+
+En resumen, useState es esencial para manejar el estado local de un componente individual, mientras que useContext es útil para compartir el estado entre varios componentes. 
+
+Dependiendo de la estructura y necesidades de la aplicacion, ambos son importantes para manejar el estado de manera eficiente y organizada.
+
+
+Algunos ejemplos posibles a ejecutar en una app bancaria podrian ser:
+
+1) useState: Por ejemplo, usarse para almacenar el saldo actual de una cuenta bancaria y actualizarlo cada vez que se realice una transaccion.
+
+2) useContext: Por ej, podría usarse para compartir la data del usuario autenticado entre diferentes secciones de la aplicación.
+
+
+
+
+

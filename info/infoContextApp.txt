@@ -1,0 +1,63 @@
+Instrucciones context-app:
+
+Vamos a entender como utilizar el contexto y asi proveer de un estado global a nuestra aplicacion y poder consumirlo desde cualquier componente.
+
+Vamos a tener dos contextos, uno de usuarios y otro de peliculas. 
+El de peliculas lo vamos a usar desde el componente MovieList que va a conter 88 peliculas en un array de JS.
+El de usuario lo vamos a consumir desde MovieList, tambien desde una pelicula especifica y desde el Navbar
+
+createContext para crear un contexto.
+userContext para consumir el contexto.
+
+i) Construir una UI basica.
+ii) Borrar archivos precargados innecesarios (App.test.js; Todos los CSS; SVGs; etc).
+iii) Dejar App.jsx limpia y quitar StrictMode de App.jsx .
+iv) Crear interfaz simple con: www.BootstrapCDN.com -> CSS -> HTML (Copiar link y pegarlo en index.html).
+v) Crear carpeta components.
+V.1) Componentes: Navbar.jsx; MovieList.jsx; Movie.jsx (Que va a ser un item de MovieList);
+v.2) Crear package consts para initialMovies.js (nuestro array de peliculas);
+vi) Formar los componentes.
+
+
+
+1) Ahora que ya hemos construido una UI basica, vamos a lo que nos importa, el contexto. El contexto basicamente va a servir para proveer de informacion a la interfaz o acepciones de la aplicacion, enviar variables, estados, funciones, informacion en general para que puedan ser consumidas y utilizadas en cualquier componente. 
+
+
+i) Crear un package "contexts" y dentro crear el primer contexto, UserContext.jsx ; El userContext servira para guardar la informacion del usuario que esta actualmente autenticado.
+
+const UserContext = createContext(); 
+
+Vamos a utilizar UserContext que tiene dos propiedades que nos importan, un provider y un consumer. Nos interesa principalmente el provider para consumir el estado.
+
+ii) Vamos consumir el UserContext desde la App.jsx.
+Pq desde la App? Pq necesitamos envolver los componentes a los cuales les quiero transmitir la informacion, entonces una idea es un contexto que guarde la informacion del usuario este envolviendo practicamente toda la aplicacion o todos los componentes necesarios de la aplicacion. 
+
+  <UserContext.Provider value={data}>
+       <Navbar />
+       <MovieList />
+    </UserContext.Provider>
+
+    Envolvemos toda la aplicacion o los componentes a los cuales les quiero pasar la informacionn . 
+    Provider recibe un value en donde vamos a enviar una data.
+
+
+iii) Vamos a consumir el contexto en el Navbar. Utilizamos el 'user' que nos provee el contexto, login y logout para iniciar y cerrar sesion.
+
+const { user, login, logout } = useContext(UserContext);
+
+iv) Construimos UserProvider (Puede ser en un archuvo indepedniente o en el mismo UserContext) Tenemos toda la logica del usuario en un UserProvider.
+
+v) Creamos un nuevo provider que va a almacenar la info de las peliculas:
+MoviesContext.jsx 
+
+const MoviesContext = createContext();
+
+v.1) Dentro de MoviesContext creamos un componente, MoivesProvider que retorna el MoviesContext.Provider con value = data .
+
+vi) Ya construido el provider podemos consumir el contexto en App.jsx . El unico componente que va a ser uso de este contexto es MovieList asi que si envolvemos solamente MovieList funcionaria perfectamente pero envolveremos toda la app porque en una aplicacion normal el Navbar contiene informacion para enlzar a otras pestañas o menus.
+
+****Si tengo varios providers deberia analizar la app para determinar que informacion es mas global, que provider puede requerir informacion de otro.
+
+vii) Volvemos al MovieList para consumir el contexto peliculas y mapear movies creando el useContext para consumir el contexto:  const { movies } = useContext ; 
+
+viii) Para finalizar vamos a dar funcionalidad de "dar a una pelicula favorita o no" creando una nueva funcion en UserContext.jsx y Movie.jsx ;
