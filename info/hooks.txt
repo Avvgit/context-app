@@ -18,6 +18,6 @@ Algunos ejemplos posibles a ejecutar en una app bancaria podrian ser:
 2) useContext: Por ej, podría usarse para compartir la data del usuario autenticado entre diferentes secciones de la aplicación.
 
 
+Este es una prueba teclado en español
 
-
-
+..ñlhols  ñ

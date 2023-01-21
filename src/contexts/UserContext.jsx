@@ -21,14 +21,14 @@ const UserProvider = ({ children }) => { //prop 'children' contiene la info desd
 
     const favoriteMovieOrNot = (movieID) => {
 
-      const isFavorite = user.favoriteMovies.includes(movieID);
+      const isFavorite = user.favoriteMovies.includes(movieID); 
 
       const favoriteMovies = isFavorite
       ? user.favoriteMovies.filter(favMovieId => favMovieId !== movieID)
       : [...user.favoriteMovies, movieID] // Agregar peliculas
 
-      setUser({
-        ...user, //...user trae los mismos atributos de user
+      setUser({ 
+        ...user, //...user trae los mismos atributos de user 
         favoriteMovies
       })
     }
